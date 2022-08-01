@@ -158,13 +158,3 @@ Citizen.CreateThread(function()
 	end
 
 end)
-
--- Siltapoies
-local silta = false
-
-AddEventHandler("playerSpawned", function ()
-    if not silta then
-        ShutdownLoadingScreenNui()
-        silta = true
-    end
-end)
