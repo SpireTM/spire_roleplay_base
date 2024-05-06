@@ -1,4 +1,4 @@
-# spire_roleplay_base
+# s_roleplay_base
 Delete Dispatch
 
 Delete WeaponDrop
