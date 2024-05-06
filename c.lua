@@ -1,10 +1,8 @@
-local kyykky = false
+-- Dispatch off
 
--- Dispatch pois
+CreateThread(function()
 
-Citizen.CreateThread(function()
-
-    Citizen.Wait(2500)
+    Wait(2500)
 
 	for i = 1, 12 do
 
@@ -14,15 +12,15 @@ Citizen.CreateThread(function()
 
 end)
 
--- Deletoidaan tulevat dropit
+-- Incoming drops will be deleted.
 
-Citizen.CreateThread(function()
+CreateThread(function()
 
     local ped = GetPlayerPed(-1)
 
     while true do
 
-        Citizen.Wait(50)
+        Wait(50)
 
         local ped = GetPlayerPed(-1)
 
@@ -38,17 +36,17 @@ Citizen.CreateThread(function()
 
             RemoveAllPickupsOfType(0xDF711959) -- M4-16
 
-            RemoveAllPickupsOfType(0xF9AFB48F) -- 9MM Pistooli
+            RemoveAllPickupsOfType(0xF9AFB48F) -- 9MM Pistol
 
-            RemoveAllPickupsOfType(0xA9355DCD) -- Haulikko	
+            RemoveAllPickupsOfType(0xA9355DCD) -- Shotgun	
 
-            RemoveAllPickupsOfType(0x88EAACA7) -- Golffi maila
+            RemoveAllPickupsOfType(0x88EAACA7) --  golf
 
             RemoveAllPickupsOfType(0xFE2A352C) -- Sniper rifle
 
             RemoveAllPickupsOfType(0x3A4C2AD2) -- MP5
 
-            RemoveAllPickupsOfType(0x6DFF6B70) -- MicroSMG (Veneistä)
+            RemoveAllPickupsOfType(0x6DFF6B70) -- MicroSMG (boat)
 
             RemoveAllPickupsOfType(0xD919B569) -- AK-47 (Swat)
 
@@ -60,11 +58,11 @@ Citizen.CreateThread(function()
 end)
 
 -- GPS 
-Citizen.CreateThread(function()
+CreateThread(function()
 
     while true do
 
-	Citizen.Wait(1)
+	Wait(1)
 
 	
 
@@ -89,8 +87,8 @@ Citizen.CreateThread(function()
 
 end)
 
--- Friendly gangsters ;DD JOU MOTHER FUCKER LOL xDDDD
-local meikalaisengangsterit = {
+-- Friendly gangsters
+local fg = {
 	"GANG_1",
 
 	"GANG_2",
@@ -141,17 +139,17 @@ local meikalaisengangsterit = {
 
 }
 
-Citizen.CreateThread(function()
+CreateThread(function()
 
 	while true do
 
-		Citizen.Wait(5000)
+		Wait(5000)
 
-		for _, grouppi in ipairs(meikalaisengangsterit) do
+		for _, group in ipairs(fg) do
 
-			SetRelationshipBetweenGroups(1, GetHashKey('PLAYER'), GetHashKey(grouppi))
+			SetRelationshipBetweenGroups(1, GetHashKey('PLAYER'), GetHashKey(group))
 
-			SetRelationshipBetweenGroups(1, GetHashKey(grouppi), GetHashKey('PLAYER'))
+			SetRelationshipBetweenGroups(1, GetHashKey(group), GetHashKey('PLAYER'))
 
 		end
 
